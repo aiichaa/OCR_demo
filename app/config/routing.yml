@@ -1,3 +1,5 @@
-app:
-    resource: "@AppBundle/Controller/"
+orca_ged:
+    resource: "@OrcaGedBundle/Controller/"
     type:     annotation
+    prefix:   /
+

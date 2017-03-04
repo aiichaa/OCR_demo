@@ -2,12 +2,161 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %}Ged Application{% endblock %}</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+        {% block stylesheets %}
+
+            <!-- Bootstrap 3.3.6 -->
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="{{ asset('assets/vendor/components-font-awesome/css/font-awesome.min.css') }}">
+            <!-- Ionicons -->
+            <link rel="stylesheet" href="{{ asset('assets/vendor/Ionicons/css/ionicons.min.css') }}">
+            <!-- Theme style -->
+            <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
+            <!-- AdminLTE Skins. Choose a skin from the css/skins
+            folder instead of downloading all of them to reduce the load. -->
+            <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
+
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('ged.png') }}" />
+
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+    <body class="hold-transition skin-blue sidebar-mini">
+        {% block body %}
+
+            <div class="wrapper">
+                <header class="main-header">
+                    <!-- Logo -->
+                    <a href="#" class="logo">
+                        <!-- mini logo for sidebar mini 50x50 pixels -->
+                        <span class="logo-mini"><b>G</b>ED</span>
+                        <!-- logo for regular state and mobile devices -->
+                        <span class="logo-lg"><b>GED</b>ORCA</span>
+                    </a>
+                    <!-- Header Navbar: style can be found in header.less -->
+                    <nav class="navbar navbar-static-top">
+                        <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <!-- User Account: style can be found in dropdown.less -->
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" class="user-image" alt="User Image">
+                                        <span class="hidden-xs">Ged User</span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+                <!-- Left side column. contains the logo and sidebar -->
+                <aside class="main-sidebar">
+                    <!-- sidebar: style can be found in sidebar.less -->
+                    <section class="sidebar">
+                        <!-- Sidebar user panel -->
+                        <div class="user-panel">
+                            <div class="pull-left image">
+                                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" class="img-circle" alt="User Image">
+                            </div>
+                            <div class="pull-left info">
+                                <p>Ged User</p>
+                                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                            </div>
+                        </div>
+                        <!-- search form -->
+                        <form action="#" method="get" class="sidebar-form">
+                            <div class="input-group">
+                                <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+                            </div>
+                        </form>
+                        <!-- /.search form -->
+                        <!-- sidebar menu: : style can be found in sidebar.less -->
+                        <ul class="sidebar-menu">
+
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i>
+                                    <span>Examples</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i>Include</a>
+                                        <ul class="treeview-menu">
+                                            <li class="treeview"><a href="{{ path('creditcase_index') }}"><i class="fa fa-circle-o"></i>Index</a></li>
+                                            <li class="treeview"><a href="{{ path('creditcase_new') }}"><i class="fa fa-circle-o"></i>New</a></li>
+                                         </ul>
+                                    </li>
+
+                                    <li><a href="#"><i class="fa fa-circle-o"></i>Drag & Drop</a>
+                                        <ul class="treeview-menu">
+                                            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i>Index</a></li>
+                                            <li class="treeview"><a href="#"><i class="fa fa-circle-o"></i>New</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </section>
+                    <!-- /.sidebar -->
+                </aside>
+
+
+                {% block content %}
+                <!-- Content Wrapper. Contains page content -->
+                {% endblock %}
+
+            </div>
+
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.3.8
+                </div>
+                <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+                reserved.
+            </footer>
+
+
+
+
+        {% endblock %}
+
+        {% block javascripts %}
+
+            <!-- Bootstrap 3.3.7 -->
+            <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <!-- Bootstrap WYSIHTML5 -->
+            <script src="{{ asset('assets/vendor/bootstrap-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js') }}"></script>
+            <!-- jQuery 3.1.1 -->
+            <script src="{{ asset('assets/vendor/jQuery/dist/jquery.min.js') }}"></script>
+            <!-- Slimscroll -->
+            <script src="{{ asset('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+            <!-- AdminLTE App -->
+            <script src="{{ asset('js/appAdminLTE.min.js') }}"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="{{ asset('js/demoAdminLTE.min.js') }}"></script>
+            <!-- Form file validation-->
+            <script src="{{ asset('js/fileValidation.js') }}"></script>
+
+
+        {% endblock %}
     </body>
+
 </html>
