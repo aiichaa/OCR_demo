@@ -17,7 +17,7 @@ class CreditCaseType extends AbstractType
         $builder->add('person')
             ->add('sum')
             ->add('date')
-            ->add('file', FileType::class, array('label' => 'upload multiple files', 'data_class' => null))
+            ->add('file', FileType::class, array('label' => 'upload file', 'data_class' => null))
         ;
     }
     
