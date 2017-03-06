@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            Dashboard
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Examples Include</li>
+        </ol>
+
+
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+
+    <h1>Creditcases list</h1>
+
+    <table border="">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Person</th>
+                <th>Sum</th>
+                <th>Date</th>
+                <th>File</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for creditCase in creditCases %}
+            <tr>
+                <td><a href="{{ path('creditcase_show', { 'id': creditCase.id }) }}">{{ creditCase.id }}</a></td>
+                <td>{{ creditCase.person }}</td>
+                <td>{{ creditCase.sum }}</td>
+                <td>{% if creditCase.date %}{{ creditCase.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ creditCase.file }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('creditcase_show', { 'id': creditCase.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('creditcase_edit', { 'id': creditCase.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('creditcase_new') }}">Create a new creditCase</a>
+        </li>
+    </ul>
+
+
+    </section>
+    <!-- right col -->
+</div>
+    <!-- /.row (main row) -->
+{% endblock %}

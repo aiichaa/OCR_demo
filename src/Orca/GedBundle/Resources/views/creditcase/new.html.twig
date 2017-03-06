@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/dragDrop.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Examples Include</li>
+            </ol>
+
+
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+
+
+            <h1>Creditcase creation</h1>
+
+            {{ form_start(form) }}
+            <label for="form">Person</label>
+            <br>
+            {{ form_widget(form.person) }}
+            <br>
+
+            <label for="form">Sum</label>
+            <br>
+            {{ form_widget(form.sum) }}
+            <br>
+
+            <label for="form">Date</label>
+            <br>
+            {{ form_widget(form.date) }}
+            <br>
+
+            <label for="form">file</label>
+            <br>
+            {{ form_widget(form.file) }}
+            <br>
+
+            <div id="filedrag">or drop files here</div>
+
+            <br>
+
+
+
+
+            <br>
+
+            <p style="color:red;">{% if error %}
+                    Invalide File Format
+                {% endif %}
+            </p>
+
+            <input type="submit" value="Create" />
+            {{ form_end(form) }}
+
+            <ul>
+                <li>
+                    <a href="{{ path('creditcase_index') }}">Back to the list</a>
+                </li>
+            </ul>
+
+
+
+        </section>
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/dropzone.js') }}"></script>
+
+{% endblock %}
+

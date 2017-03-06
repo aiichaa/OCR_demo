@@ -1,0 +1,19 @@
+{
+  "name": "gedorca",
+  "homepage": "https://github.com/aiichaa/gedorca",
+  "authors": [
+    "aiichaa <aicha.fatrah@gmail.com>"
+  ],
+  "description": "ged application",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "components-font-awesome": "^4.7.0",
+    "Ionicons": "ionicons#^2.0.1",
+    "bootstrap3-wysihtml5-bower": "^0.3.3",
+    "jquery-slimscroll": "^1.3.8",
+    "jquery-ui": "^1.12.1",
+    "jQuery": "^3.1.1"
+  }
+}
