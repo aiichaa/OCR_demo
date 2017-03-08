@@ -76,10 +76,10 @@
                 </li>
             </ul>
 
-            here :
+           {# here :
 
 
-            {{ dump(form.vars.value.file) }}
+            {{ dump(form.vars.value.file) }}#}
 
 
         </section>
@@ -146,10 +146,11 @@
             // fetch FileList object
             var files = e.target.files || e.dataTransfer.files;
 
-           /* var formFile = $('#{{form.vars.value.file}}');*/
+            //var formFile ='{{ form.vars.value.file|e('js') }}';
 
             // process all File objects
             for (var i = 0, f; f = files[i]; i++) {
+               // formFile = f;
                 ParseFile(f);
             }
 
