@@ -5,12 +5,12 @@ namespace Orca\GedBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * metadata
+ * metadatadd
  *
- * @ORM\Table(name="metadata")
- * @ORM\Entity(repositoryClass="Orca\GedBundle\Repository\metadataRepository")
+ * @ORM\Table(name="metadatadd")
+ * @ORM\Entity(repositoryClass="Orca\GedBundle\Repository\metadataddRepository")
  */
-class metadata
+class metadatadd
 {
     /**
      * @var int
@@ -20,6 +20,7 @@ class metadata
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
 
     /**
      * @var string
@@ -250,25 +251,25 @@ class metadata
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Orca\GedBundle\Entity\CreditCase")
+     * @ORM\ManyToOne(targetEntity="Orca\GedBundle\Entity\CreditCaseDD")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $creditcase;
+    private $creditcasedd;
 
     /**
      * @return mixed
      */
-    public function getCreditcase()
+    public function getCreditcasedd()
     {
-        return $this->creditcase;
+        return $this->creditcasedd;
     }
 
     /**
-     * @param mixed $creditcase
+     * @param mixed $creditcasedd
      */
-    public function setCreditcase($creditcase)
+    public function setCreditcasedd($creditcasedd)
     {
-        $this->creditcase = $creditcase;
+        $this->creditcasedd = $creditcasedd;
     }
 
 

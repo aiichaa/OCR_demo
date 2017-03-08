@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            Dashboard
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Examples Include</li>
+        </ol>
+
+
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+    <h1>Creditcase</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ creditCaseDD.id }}</td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td><a href="{{ asset('uploads/files/' ~ creditCaseDD.file) }}">View file</a></td>
+            </tr>
+            <tr>
+                <th>File Metadata : </th>
+                <table border="">
+                    {% for metadata in metadata %}
+                    <tr>
+                        <th>Content</th>
+                        <td>{{ metadata.content }}</td>
+                    </tr>
+                    <tr>
+                        <th>File Type</th>
+                        <td>{{ metadata.contentType }}</td>
+                    </tr>
+                    <tr>
+                        <th>File Size</th>
+                        <td>{{ metadata.fileSize }}</td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('creditcasedd_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('creditcasedd_edit', { 'id': creditCaseDD.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+
+
+
+    </section>
+    <!-- right col -->
+</div>
+    <!-- /.row (main row) -->
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <!-- dropzone 4.3. -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/dropzone/dist/dropzone.css') }}">
+{% endblock %}
+
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Examples Include</li>
+            </ol>
+
+
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <br>
+            <br>
+
+
+            <h3>Upload file : </h3>
+            <br>
+
+            <div class="dropzone" id="dropBoxId" action="{{path('creditcasedd_new')}}" method="POST">
+
+                <div class="dz-message needsclick">
+                    Drop files here or click to upload.
+                </div>
+
+            </div>
+
+            <br>
+            <button id="reset">Reset</button><br>
+            <br>
+            <button id="submit">Submit</button>
+
+
+        </section>
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- dropzone -->
+    <script src="{{ asset('assets/vendor/dropzone/dist/dropzone.js') }}"></script>
+
+    <script>
+
+
+        //je récupère l'action où sera traité l'upload en PHP
+        /*var _actionToDropZone = $("#dropBoxId").attr('action');*/
+
+        //je définis ma zone de drop grâce à l'ID de ma div citée plus haut.
+       // Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#dropBoxId", {
+            //url: _actionToDropZone,
+            addRemoveLinks: true,
+            uploadMultiple: false,
+            autoProcessQueue: false, // this is important as you dont want form to be submitted unless you have clicked the submit button
+            autoDiscover: false,
+            parallelUploads: 1,
+            maxFiles: 1,
+            clickable: false, // this tells that the dropzone will not be clickable . we have to do it because v dont want the whole form to be clickable
+            accept: function(file, done) {
+                console.log("uploaded");
+                done();
+            },
+            error: function(file, msg){
+                alert(msg);
+            },
+            init: function() {
+
+                var myDropzone = this;
+                //now we will submit the form when the button is clicked
+                $("#submit").on('click',function(e) {
+                    e.preventDefault();
+                    myDropzone.processQueue();
+                });
+
+            } // init end
+
+        });
+
+
+        $('#reset').click(function(){
+            myDropzone.removeAllFiles(true);
+        });
+
+
+        /*$('#submit').click(function(){
+            myDropzone.processQueue();
+        });*/
+
+
+
+
+    </script>
+
+{% endblock %}
+
