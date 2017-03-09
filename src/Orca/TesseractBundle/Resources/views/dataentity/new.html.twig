@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            Dashboard
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Using Tesseract</li>
+        </ol>
+
+
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+    <h1>Dataentity creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <br>
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('dataentity_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+    </section>
+    <!-- right col -->
+</div>
+    <!-- /.row (main row) -->
+{% endblock %}

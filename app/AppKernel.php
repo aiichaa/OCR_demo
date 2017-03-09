@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Orca\GedBundle\OrcaGedBundle(),
+            new Orca\TesseractBundle\OrcaTesseractBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,3 +1,8 @@
+orca_tesseract:
+    resource: "@OrcaTesseractBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 orca_ged:
     resource: "@OrcaGedBundle/Controller/"
     type:     annotation

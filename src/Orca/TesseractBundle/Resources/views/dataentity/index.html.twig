@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+
+        <h1>
+            Dashboard
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Using Tesseract</li>
+        </ol>
+
+
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+
+    <h1>Dataentities list</h1>
+
+    <table border="">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>File</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dataEntity in dataEntities %}
+            <tr>
+                <td><a href="{{ path('dataentity_show', { 'id': dataEntity.id }) }}">{{ dataEntity.id }}</a></td>
+                <td><a href="{{ asset('uploads/files/' ~ dataEntity.file) }}">View file</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dataentity_show', { 'id': dataEntity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dataentity_edit', { 'id': dataEntity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dataentity_new') }}">Create a new dataEntity</a>
+        </li>
+    </ul>
+
+    </section>
+    <!-- right col -->
+</div>
+    <!-- /.row (main row) -->
+{% endblock %}
