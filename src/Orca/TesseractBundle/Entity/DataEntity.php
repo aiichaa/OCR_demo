@@ -62,5 +62,50 @@ class DataEntity
     {
         return $this->file;
     }
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orca\GedBundle\Entity\metadata",mappedBy="creditcase",cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $metadata;
+
+    /**
+     * @return mixed
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * @param mixed $metadata
+     */
+    public function setMetadata($metadata)
+    {
+        $this->metadata = $metadata;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orca\TesseractBundle\Entity\metadatadoc",mappedBy="dataEntity",cascade={"remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $metadatadoc;
+
+    /**
+     * @return mixed
+     */
+    public function getMetadatadoc()
+    {
+        return $this->metadatadoc;
+    }
+
+    /**
+     * @param mixed $metadatadoc
+     */
+    public function setMetadatadoc($metadatadoc)
+    {
+        $this->metadatadoc = $metadatadoc;
+    }
 }
 

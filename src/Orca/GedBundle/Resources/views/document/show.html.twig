@@ -23,47 +23,31 @@
     <!-- Main content -->
     <section class="content">
 
-    <h1>Creditcase</h1>
+    <h1>Document</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ creditCaseDD.id }}</td>
+                <td>{{ document.id }}</td>
             </tr>
             <tr>
-                <th>File</th>
-                <td><a href="{{ asset('uploads/files/' ~ creditCaseDD.file) }}">View file</a></td>
+                <th>Name</th>
+                <td>{{ document.name }}</td>
             </tr>
             <tr>
-                <th>File Metadata : </th>
-                <table border="">
-                    {% for metadata in metadata %}
-                    <tr>
-                        <th>Content</th>
-                        <td>{{ metadata.content }}</td>
-                    </tr>
-                    <tr>
-                        <th>File Type</th>
-                        <td>{{ metadata.contentType }}</td>
-                    </tr>
-                    <tr>
-                        <th>File Size</th>
-                        <td>{{ metadata.fileSize }}</td>
-                    </tr>
-
-                    {% endfor %}
-                </table>
+                <th>Path</th>
+                <td>{{ document.path }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('creditcasedd_index') }}">Back to the list</a>
+            <a href="{{ path('document_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('creditcasedd_edit', { 'id': creditCaseDD.id }) }}">Edit</a>
+            <a href="{{ path('document_edit', { 'id': document.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
@@ -71,8 +55,6 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
-
-
 
 
 

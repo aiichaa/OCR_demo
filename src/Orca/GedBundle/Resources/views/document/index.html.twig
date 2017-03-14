@@ -23,29 +23,30 @@
     <!-- Main content -->
     <section class="content">
 
+    <h1>Documents list</h1>
 
-    <h1>Creditcases list</h1>
-
-    <table border="">
+    <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>File</th>
+                <th>Name</th>
+                <th>Path</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for creditCase in creditCaseDDs %}
+        {% for document in documents %}
             <tr>
-                <td><a href="{{ path('creditcasedd_show', { 'id': creditCase.id }) }}">{{ creditCase.id }}</a></td>
-                <td>{{ creditCase.file }}</td>
+                <td><a href="{{ path('document_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+                <td>{{ document.name }}</td>
+                <td>{{ document.path }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('creditcasedd_show', { 'id': creditCase.id }) }}">show</a>
+                            <a href="{{ path('document_show', { 'id': document.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('creditcasedd_edit', { 'id': creditCase.id }) }}">edit</a>
+                            <a href="{{ path('document_edit', { 'id': document.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -56,10 +57,9 @@
 
     <ul>
         <li>
-            <a href="{{ path('creditcasedd_new') }}">Create a new creditCase</a>
+            <a href="{{ path('document_new') }}">Create a new document</a>
         </li>
     </ul>
-
 
     </section>
     <!-- right col -->

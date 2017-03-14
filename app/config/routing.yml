@@ -1,3 +1,7 @@
+orca_ged_document:
+    resource: "@OrcaGedBundle/Controller/DocumentController.php"
+    type:     annotation
+
 orca_tesseract:
     resource: "@OrcaTesseractBundle/Controller/"
     type:     annotation

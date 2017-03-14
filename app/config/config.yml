@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: en
     files_directory: '%kernel.root_dir%/../web/uploads/files'
+    tesseract_directory: '%kernel.root_dir%/../web/uploads/tesseract'
 
 framework:
     #esi:             ~

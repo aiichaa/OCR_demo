@@ -251,25 +251,25 @@ class metadatadd
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Orca\GedBundle\Entity\CreditCaseDD")
+     * @ORM\ManyToOne(targetEntity="Orca\GedBundle\Entity\Document")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $creditcasedd;
+    private $document;
 
     /**
      * @return mixed
      */
-    public function getCreditcasedd()
+    public function getDocument()
     {
-        return $this->creditcasedd;
+        return $this->document;
     }
 
     /**
-     * @param mixed $creditcasedd
+     * @param mixed $document
      */
-    public function setCreditcasedd($creditcasedd)
+    public function setDocument($document)
     {
-        $this->creditcasedd = $creditcasedd;
+        $this->document = $document;
     }
 
 

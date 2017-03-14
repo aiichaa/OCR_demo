@@ -35,10 +35,32 @@
             </tr>
             <tr>
                 <th>File</th>
-                <td><a href="{{ asset('uploads/files/' ~ dataEntity.file) }}">View file</a></td>
+                <td>{{ dataEntity.file }}</td>
             </tr>
+
         </tbody>
     </table>
+
+
+                <h2>File Metadata : </h2>
+                <table border="">
+                    {% for metadatadoc in metadatadoc %}
+                        <tr>
+                            <th>Content</th>
+                            <td>{{ metadatadoc.content }}</td>
+                        </tr>
+                        <tr>
+                            <th>File Type</th>
+                            <td>{{ metadatadoc.contentType }}</td>
+                        </tr>
+                        <tr>
+                            <th>File Size</th>
+                            <td>{{ metadatadoc.fileSize }}</td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+
 
     <ul>
         <li>

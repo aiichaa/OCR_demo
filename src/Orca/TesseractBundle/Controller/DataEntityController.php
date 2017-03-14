@@ -3,6 +3,7 @@
 namespace Orca\TesseractBundle\Controller;
 
 use Orca\TesseractBundle\Entity\DataEntity;
+use Orca\TesseractBundle\Entity\metadatadoc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -54,50 +55,56 @@ class DataEntityController extends Controller
             $file = $dataEntity->getFile();
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileExtension = $file->guessExtension();
 
             $file->move(
-                $this->getParameter('files_directory'),
+                $this->getParameter('tesseract_directory'),
                 $fileName
             );
 
             $dataEntity->setFile($fileName);
 
-           /*$filePath = $this->getParameter('files_directory') .'/'. $fileName ;
-           $tempPath = $this->getParameter('files_directory') .'/temp' ;*/
+           $filePath = $this->getParameter('tesseract_directory') .'/'. $fileName ;
 
-            // Retrieve the webpath in symfony
-            $webPath = $this->get('kernel')->getRootDir().'/../web/';
-            // The filename of the image is text.jpeg and is located inside the web folder
-            $filepath = $webPath.'text.png';
+          // $tempPath = $this->getParameter('tesseract_directory') .'/temp' ;
 
-            // Is useful to verify if the file exists, because the tesseract wrapper
-            // will throw an error but without description
-            /*if(!file_exists($filepath)){
+//            // Retrieve the webpath in symfony
+//            $webPath = $this->get('kernel')->getRootDir().'/../web/';
+//            // The filename of the image is text.jpeg and is located inside the web folder
+//            $filepath = $webPath.'text.png';
+
+
+            if(!file_exists($filePath)){
 
                 var_dump('file doesnt exist');
+                //die();
 
             }else{
 
                 var_dump('file exists');
+               // die();
 
-            }*/
+            }
 
-            // Create a  new instance of tesseract and provide as first parameter
-            // the local path of the image
-         //   $tesseractInstance = new TesseractOCR($filepath);
 
-            // Execute tesseract to recognize text
-          //  $result = $tesseractInstance->run();
 
 
             $tesseract = new Tesseract();
-            //$version = $tesseract->getVersion();
-            //$languages = $tesseract->getSupportedLanguages();
-            $text = $tesseract->recognize($filepath);
+            //$tesseract ->setTempDir($tempPath);
+            $text = $tesseract->recognize($filePath);
+
+            $metadatadoc = new metadatadoc();
+            $metadatadoc->setContent($text);
+            $metadatadoc->setContentType($fileExtension);
+            $metadatadoc->setFileSize($file->getClientSize());
+            $metadatadoc->setDataEntity($dataEntity);
+            $em->persist($metadatadoc);
+            $em->flush($metadatadoc);
 
 
-            var_dump($text);
-            die();
+//            var_dump($file);
+//            var_dump($text);
+//            die();
 
 
             $em->persist($dataEntity);
@@ -123,9 +130,14 @@ class DataEntityController extends Controller
     {
         $deleteForm = $this->createDeleteForm($dataEntity);
 
+        //get metadatas of document
+        $em = $this->getDoctrine()->getManager();
+        $metadatadoc = $em->getRepository('OrcaTesseractBundle:metadatadoc')->findBy(array('dataEntity'=>$dataEntity->getId()));
+
         return $this->render('OrcaTesseractBundle:dataentity:show.html.twig', array(
             'dataEntity' => $dataEntity,
             'delete_form' => $deleteForm->createView(),
+            'metadatadoc'=>$metadatadoc
         ));
     }
 

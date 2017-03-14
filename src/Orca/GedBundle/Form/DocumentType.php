@@ -7,7 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class CreditCaseDDType extends AbstractType
+
+
+class DocumentType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,7 +25,7 @@ class CreditCaseDDType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Orca\GedBundle\Entity\CreditCaseDD'
+            'data_class' => 'Orca\GedBundle\Entity\Document'
         ));
     }
 
@@ -32,7 +34,7 @@ class CreditCaseDDType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'orca_gedbundle_creditcasedd';
+        return 'orca_gedbundle_document';
     }
 
 
